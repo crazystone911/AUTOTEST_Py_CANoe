@@ -1,0 +1,41 @@
+﻿/*@!Encoding:65001*/
+includes
+{
+  
+}
+variables
+{
+  message BodyInfo_3 IgnitionINFO;
+  msTimer timer_Ignition_1;
+  msTimer timer_Ignition_4;
+  msTimer timer_Cancle;
+  int i = 0;
+}
+
+
+on start
+{
+   // setTimer(timer_Ignition_1, 5000); 
+    setTimer(timer_Ignition_4, 10000);
+    //setTimer(timer_Cancle,20000);
+}
+
+on timer timer_Ignition_1
+{
+    IgnitionINFO.Ignition_Status = 1;
+    output(IgnitionINFO);
+    setTimer(timer_Ignition_1, 100); 
+}
+
+on timer timer_Ignition_4
+{
+    cancelTimer(timer_Ignition_1);
+    IgnitionINFO.Ignition_Status = 4;
+    output(IgnitionINFO);
+    setTimer(timer_Ignition_4, 100); 
+}
+
+on timer timer_Cancle
+{
+     cancelTimer(timer_Ignition_4);
+}
